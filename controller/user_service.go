@@ -5,13 +5,13 @@ import (
 	"net/http"
 )
 
-type User struct {
+type user struct {
 	Name string `json:"name"`
 	Age  int    `json:"age"`
 }
 
 func PostHandler(c *gin.Context) {
-	var user User
+	var user user
 	// 解析POST请求的JSON数据到user结构体中
 	if err := c.ShouldBindJSON(&user); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
